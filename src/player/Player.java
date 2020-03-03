@@ -4,14 +4,20 @@ import materials.Coin;
 
 public class Player {
 
-  private int id;
+    private int id;
 
-  public Player(int id) {
-    this.id = id;
-  }
+    public Player(int id) {
+        this.id = id;
+    }
 
-  public void play(Coin coin) {
-    coin.throwCoin();
-  }
+    public void play(Coin coin) {
+        coin.throwCoin();
+    }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                '}';
+    }
 }

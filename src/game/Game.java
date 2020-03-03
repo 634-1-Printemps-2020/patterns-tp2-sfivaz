@@ -23,14 +23,29 @@ public class Game {
      * @param player le nouveau joueur
      */
     public void addPlayer(Player player) {
-      // TODO: Votre code ici
+        // TODO: Votre code ici
+        history.put(player, new ArrayList<>());
     }
 
     /**
      * Faire joueur tous les joueurs et stocker chaque partie dans history
      */
     public void play() {
-      // TODO: Votre code ici
+        for (Player player : history.keySet())
+            play(player);
+    }
+
+    private void play(Player player) {
+        Rules rules = Rules.getRules();
+        while (!rules.checkWin(history.get(player)))
+            playOnce(player);
+    }
+
+    private void playOnce(Player player) {
+        Coin coin = Coin.getCoin();
+        player.play(coin);
+        CoinState coinState = coin.getState();
+        history.get(player).add(coinState);
     }
 
     /**
@@ -39,8 +54,10 @@ public class Game {
      * @return Statistics
      */
     public Statistics getStatistics() {
-      // TODO: Votre code ici
-      return null;
+        // TODO: Votre code ici
+        for (Player player : history.keySet())
+            System.out.println(player + " " + history.get(player));
+        return null;
     }
 
     /**
@@ -49,8 +66,8 @@ public class Game {
      * @return Map contenant chaque joueur et la liste des ses lancers
      */
     public Map<Player, List<CoinState>> getHistory() {
-      // TODO: Votre code ici
-      return null;
+        // TODO: Votre code ici
+        return null;
     }
 
 
@@ -61,8 +78,8 @@ public class Game {
      * @return la liste des lancers d'un joueur
      */
     public List<CoinState> getSpecificHistory(Player player) {
-      // TODO: Votre code ici
-      return null;
+        // TODO: Votre code ici
+        return null;
     }
 
 }

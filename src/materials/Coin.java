@@ -1,20 +1,36 @@
 package materials;
 
+import java.util.Random;
+
 public class Coin {
 
-  private CoinState coinState;
+    private CoinState coinState;
+    private static Coin instance = null;
 
-  /**
-   * Change l'état de la pièce.
-   * 50% de probabilité d'obtenir HEADS, 50% de probabilité d'obtenir TAILS
-   */
-  public void throwCoin() {
-    // TODO : Votre code ici
-  }
+    public static Coin getCoin() {
+        if (instance == null)
+            instance = new Coin();
+        return instance;
+    }
 
-  public CoinState getState() {
-    return coinState;
-  }
+    private Coin() {
+    }
+
+    /**
+     * Change l'état de la pièce.
+     * 50% de probabilité d'obtenir HEADS, 50% de probabilité d'obtenir TAILS
+     */
+    public void throwCoin() {
+        // TODO : Votre code ici
+        if (new Random().nextBoolean())
+            coinState = CoinState.HEADS;
+        else
+            coinState = CoinState.TAILS;
+    }
+
+    public CoinState getState() {
+        return coinState;
+    }
 
 
 }
