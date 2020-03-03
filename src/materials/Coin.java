@@ -21,7 +21,6 @@ public class Coin {
      * 50% de probabilité d'obtenir HEADS, 50% de probabilité d'obtenir TAILS
      */
     public void throwCoin() {
-        // TODO : Votre code ici
         if (new Random().nextBoolean())
             coinState = CoinState.HEADS;
         else
